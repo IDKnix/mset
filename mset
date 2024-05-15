@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ -d $1 ]; then
+	read -p "Choose random wallpaper from $1? (y/n) " randw
+
+	if [ $randw = "y" ]; then
+		cd $1
+		feh --bg-scale $(ls $1 | shuf -n 1)
+	else
+		false
+	fi
+
+else
+	feh --bg-scale $1
+fi
+
+echo "Changed the wallpaper!"
